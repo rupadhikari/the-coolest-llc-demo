@@ -1,0 +1,142 @@
+---
+const faqs = [
+  { question: 'Do you offer emergency service?', answer: 'Yes. We provide 24/7 emergency HVAC service for urgent breakdowns, especially during extreme weather.' },
+  { question: 'What areas do you serve?', answer: 'We serve Austin and surrounding areas including Round Rock, Cedar Park, Pflugerville, Buda, and Leander.' },
+  { question: 'Are you licensed and insured?', answer: 'Yes. All our technicians are licensed, insured, and undergo continuous training.' },
+  { question: 'How do I schedule maintenance?', answer: 'Use the contact form above, call us at (512) 468-6140, or use our online scheduling link.' }
+];
+---
+<section id="faq" class="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {faqs.map((faq) => (
+        <details class="faq-item">
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+    <div class="chatbot-widget">
+      <h3>Still have questions?</h3>
+      <p>Chat with our AI assistant for instant answers about services, pricing, and scheduling.</p>
+      <button type="button" class="btn btn-primary" id="open-chat">Open Chat</button>
+      <div id="chat-panel" class="chat-panel" aria-hidden="true">
+        <div class="chat-header">
+          <strong>AI Assistant</strong>
+          <button type="button" id="close-chat" aria-label="Close chat">✕</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+          <p class="bot-message">Hi! Ask me anything about our HVAC services.</p>
+        </div>
+        <form class="chat-input" id="chat-form">
+          <input type="text" id="chat-user-input" placeholder="Type your question..." autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const openBtn = document.getElementById('open-chat');
+  const closeBtn = document.getElementById('close-chat');
+  const panel = document.getElementById('chat-panel');
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('chat-user-input');
+  const messages = document.getElementById('chat-messages');
+  function toggleChat(show) {
+    panel.setAttribute('aria-hidden', String(!show));
+    if (show) input.focus();
+  }
+  openBtn?.addEventListener('click', () => toggleChat(true));
+  closeBtn?.addEventListener('click', () => toggleChat(false));
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    messages.innerHTML += `<p class="user-message">${text}</p>`;
+    input.value = '';
+    setTimeout(() => {
+      messages.innerHTML += `<p class="bot-message">Thanks! A team member will follow up shortly.</p>`;
+      messages.scrollTop = messages.scrollHeight;
+    }, 600);
+    messages.scrollTop = messages.scrollHeight;
+  });
+</script>
+<style>
+  .faq { padding: 4rem 0; }
+  .faq h2 { text-align: center; font-size: 2rem; margin: 0 0 2rem; color: var(--color-primary); }
+  .faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 0.75rem; }
+  .faq-item {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  .faq-item summary { font-weight: 600; cursor: pointer; color: var(--color-primary); }
+  .faq-item p { margin: 0.75rem 0 0; color: var(--color-text-light); }
+  .chatbot-widget {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    background: var(--color-primary);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .chatbot-widget h3 { margin: 0 0 0.5rem; }
+  .chatbot-widget p { margin: 0 0 1rem; color: #cbd5e1; }
+  .chat-panel {
+    display: none;
+    margin-top: 1rem;
+    background: white;
+    color: var(--color-text);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-align: left;
+  }
+  .chat-panel[aria-hidden="false"] { display: block; }
+  .chat-header {
+    background: var(--color-accent);
+    color: white;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chat-header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .chat-messages {
+    padding: 1rem;
+    min-height: 180px;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .bot-message { background: white; border: 1px solid #e2e8f0; padding: 0.6rem 0.8rem; border-radius: 0.5rem; align-self: flex-start; max-width: 85%; }
+  .user-message { background: var(--color-accent); color: white; padding: 0.6rem 0.8rem; border-radius: 0.5rem; align-self: flex-end; max-width: 85%; }
+  .chat-input {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-top: 1px solid #e2e8f0;
+  }
+  .chat-input input { flex: 1; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: var(--radius); font: inherit; }
+  .chat-input button {
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>

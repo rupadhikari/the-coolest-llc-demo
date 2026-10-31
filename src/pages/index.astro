@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Reviews from '../components/Reviews.astro';
+import FAQChatbot from '../components/FAQChatbot.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const services = [
+  { title: 'AC Repair', description: 'Fast diagnostics and repairs for all cooling systems. Same-day service available.' },
+  { title: 'AC Installation', description: 'Expert installation of energy-efficient systems with manufacturer warranties.' },
+  { title: 'Heating Repair', description: 'Reliable furnace and heat pump repairs to keep your home warm all winter.' },
+  { title: 'Maintenance Plans', description: 'Preventative maintenance programs that catch issues before costly breakdowns.' },
+  { title: 'Air Quality', description: 'Indoor air quality solutions including filtration, purification, and ventilation.' },
+  { title: '24/7 Emergency', description: 'Round-the-clock emergency service for urgent breakdowns, even after hours.' }
+];
+
+const reviews = [
+  { author: 'Sarah M.', rating: 5, text: 'Arrived on time, explained everything clearly, and fixed our AC in under an hour.', source: 'Google' },
+  { author: 'James R.', rating: 5, text: 'Honest pricing, professional team, and great follow-up. Highly recommended.', source: 'Google' },
+  { author: 'Maria L.', rating: 5, text: 'They caught an issue our previous contractor missed. Saved us from a costly replacement.', source: 'Google' }
+];
+---
+<Layout title="Home" description="Austin's #1 rated HVAC company. 5.0 stars on Google. AC repair, installation, heating, and 24/7 emergency service.">
+  <Hero headline="Austin's #1 Rated HVAC Company" subheadline="The Coolest LLC delivers honest, reliable heating and cooling services to Austin homeowners. 5.0 stars across 776+ Google reviews." ctaText="Schedule Service" ctaHref="#contact" />
+  <Services {services} />
+  <Reviews {reviews} />
+  <FAQChatbot />
+  <ContactForm />
+</Layout>

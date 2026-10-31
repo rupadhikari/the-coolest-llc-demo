@@ -1,0 +1,74 @@
+---
+const success = Astro.url.searchParams.get('sent') === '1';
+---
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p class="contact-sub">Fill out the form below and we'll get back to you within one business day.</p>
+    {success ? (
+      <div class="success-message">
+        <h3>Thank you!</h3>
+        <p>Your message has been received. We'll be in touch shortly.</p>
+      </div>
+    ) : (
+      <form class="contact-form" method="POST" action="?sent=1">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="John Smith" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(512) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option value="repair">AC Repair</option>
+            <option value="install">AC Installation</option>
+            <option value="heating">Heating Repair</option>
+            <option value="maintenance">Maintenance Plan</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    )}
+  </div>
+</section>
+<style>
+  .contact { padding: 4rem 0; }
+  .contact h2 { text-align: center; font-size: 2rem; margin: 0 0 0.5rem; color: var(--color-primary); }
+  .contact-sub { text-align: center; color: var(--color-text-light); margin: 0 0 2rem; }
+  .contact-form { max-width: 640px; margin: 0 auto; display: grid; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-group label { font-weight: 600; font-size: 0.9rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: 1rem;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: 2px solid var(--color-accent);
+    border-color: transparent;
+  }
+  .success-message {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    padding: 1.25rem;
+    border-radius: var(--radius);
+  }
+</style>

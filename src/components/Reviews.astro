@@ -1,0 +1,45 @@
+---
+interface Review {
+  author: string;
+  rating: number;
+  text: string;
+  source?: string;
+}
+const { reviews }: { reviews: Review[] } = Astro.props;
+---
+<section id="reviews" class="reviews">
+  <div class="container">
+    <h2>What Our Customers Say</h2>
+    <div class="reviews-grid">
+      {reviews.map((review) => (
+        <div class="review-card">
+          <div class="stars" aria-label="{review.rating} out of 5 stars">
+            {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+          </div>
+          <p class="review-text">"{review.text}"</p>
+          <p class="review-author">— {review.author}</p>
+          {review.source && <p class="review-source">via {review.source}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  .reviews { padding: 4rem 0; }
+  .reviews h2 { text-align: center; font-size: 2rem; margin: 0 0 2.5rem; color: var(--color-primary); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+  }
+  .stars { color: #f59e0b; letter-spacing: 0.1rem; margin-bottom: 0.75rem; }
+  .review-text { margin: 0 0 1rem; font-style: italic; color: var(--color-text); }
+  .review-author { margin: 0; font-weight: 600; color: var(--color-primary); }
+  .review-source { margin: 0.25rem 0 0; font-size: 0.8rem; color: var(--color-text-light); }
+</style>
