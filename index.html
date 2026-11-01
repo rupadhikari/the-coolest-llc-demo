@@ -2,221 +2,287 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>The Coolest LLC – Austin's #1 Rated HVAC Company</title>
+<title>The Coolest LLC – Premium HVAC in Austin, TX</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0a0a0a;
   --surface:#141414;
-  --text:#f5f5f5;
   --accent:#d4a853;
-  --font:Inter, "Segoe UI", system-ui, sans-serif;
+  --text:#f5f5f5;
+  --header-bg:rgba(20,20,20,0.9);
+  --font-primary:'Inter',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{font-family:var(--font);color:var(--text);background:var(--bg);}
-a{color:var(--accent);text-decoration:none;}
-button{font-family:inherit;cursor:pointer;}
-img{max-width:100%;height:auto;}
-.container{width:90%;max-width:1200px;margin:auto;}
+body{
+  font-family:var(--font-primary);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;height:auto;display:block;}
 header{
   position:sticky;top:0;z-index:1000;
-  background:var(--surface);
+  background:var(--header-bg);
   display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 0;
+  padding:0.8rem 2rem;
 }
-.logo{font-size:1.5rem;font-weight:700;color:var(--accent);}
-.header-phone a{font-size:1rem;color:var(--text);}
+header .logo{
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--accent);
+}
+header .phone{
+  border:2px solid var(--accent);
+  padding:0.4rem 0.8rem;
+  border-radius:4px;
+  font-weight:600;
+}
+section{
+  width:100%;
+  padding:4rem 2rem;
+}
 .hero{
-  background:var(--surface);
-  padding:4rem 0;
+  position:relative;
+  min-height:100vh;
+  background:url('https://images.unsplash.com/photo-1560185127-6c3d0c2c0d2a?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.3));
 }
 .hero h1{
-  font-size:4rem;line-height:1.1;font-weight:700;margin-bottom:.5rem;
+  font-size:64px;
+  font-weight:700;
+  color:var(--text);
+  position:relative;
+  z-index:1;
 }
 .hero p{
-  font-size:1.125rem;margin-bottom:2rem;
+  margin:1.5rem 0;
+  font-size:1.125rem;
+  color:var(--text);
+  position:relative;
+  z-index:1;
 }
-.btn{
-  display:inline-block;padding:.75rem 1.5rem;
-  background:var(--accent);color:#000;font-weight:600;
-  border:none;border-radius:4px;margin:0 .5rem;
+.hero .cta{
+  display:flex;gap:1rem;flex-wrap:wrap;justify-center:center;
+  position:relative;z-index:1;
 }
-.btn.secondary{
-  background:transparent;border:2px solid var(--accent);color:var(--accent);
+.hero .btn-primary{
+  background:var(--accent);
+  color:#000;
+  padding:0.9rem 1.8rem;
+  font-weight:600;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+  transition:transform .2s;
 }
-.trust{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;
-  background:var(--surface);padding:1.5rem 0;
+.hero .btn-primary:hover{transform:scale(1.05);}
+.hero .btn-secondary{
+  background:transparent;
+  color:var(--accent);
+  border:2px solid var(--accent);
+  padding:0.8rem 1.6rem;
+  border-radius:4px;
+  cursor:pointer;
+  transition:background .2s,color .2s;
 }
-.trust-item{
-  display:flex;align-items:center;gap:.5rem;font-size:.9rem;
+.hero .btn-secondary:hover{
+  background:var(--accent);
+  color:#000;
+}
+.stats{
+  background:var(--surface);
+  display:flex;justify-content:center;align-items:center;
+  gap:2rem;
+  padding:1rem 0;
+  flex-wrap:wrap;
+}
+.stats div{
+  font-size:1rem;
+  font-weight:600;
+}
+.stats .divider{
+  width:2px;
+  height:24px;
+  background:var(--accent);
 }
 .services{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:1.5rem;padding:3rem 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2rem;
 }
 .service-card{
-  background:var(--surface);padding:1.5rem;border-radius:6px;
+  background:var(--surface);
+  padding:2rem;
+  border-radius:8px;
   text-align:center;
+  transition:border .3s;
+  border:2px solid transparent;
 }
-.service-card h3{font-size:1.25rem;margin:1rem 0 .5rem;}
-.service-card p{font-size:.95rem;line-height:1.4;}
-.highlights{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;
-  padding:2rem 0;background:var(--surface);
+.service-card:hover{
+  border-color:var(--accent);
 }
-.highlight-item{
-  text-align:center;
+.service-card .icon{
+  font-size:2.5rem;
+  margin-bottom:1rem;
 }
-.highlight-item h3{font-size:1.75rem;color:var(--accent);margin-bottom:.25rem;}
-.highlight-item p{font-size:.9rem;}
+.service-card h3{
+  font-size:1.25rem;
+  margin-bottom:0.5rem;
+}
+.service-card p{
+  font-size:1rem;
+}
 .why{
-  padding:3rem 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:2rem;
+  text-align:center;
 }
-.why h2{font-size:2.25rem;margin-bottom:1rem;text-align:center;}
-.bullets{
-  max-width:800px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:1rem;
+.why .item{
+  padding:2rem;
 }
-.bullet{
-  display:flex;align-items:flex-start;gap:.75rem;
+.why .item .icon{
+  font-size:2rem;
+  color:var(--accent);
+  margin-bottom:0.8rem;
 }
-.bullet svg{flex-shrink:0;width:24px;height:24px;fill:var(--accent);}
-.bullet p{font-size:.95rem;line-height:1.4;}
-.cta-section{
-  background:var(--surface);text-align:center;padding:3rem 1rem;
+.reviews{
+  background:var(--surface);
+  text-align:center;
+  padding:3rem 2rem;
 }
-.cta-section h2{font-size:2rem;margin-bottom:1rem;}
-.cta-section .phone{font-size:1.5rem;color:var(--accent);margin-bottom:1rem;display:inline-block;}
-.emergency-badge{
-  display:inline-block;background:var(--accent);color:#000;padding:.25rem .75rem;
-  border-radius:12px;font-size:.85rem;font-weight:600;
+.reviews .rating{
+  font-size:3rem;
+  font-weight:700;
+  color:var(--accent);
+}
+.reviews .sub{
+  font-size:1.125rem;
+  margin-top:0.5rem;
+}
+.reviews .badges{
+  display:flex;justify-content:center;gap:1.5rem;margin-top:1.5rem;
+}
+.reviews .badges img{
+  height:40px;
+}
+.emergency{
+  background:var(--accent);
+  color:#000;
+  text-align:center;
+  padding:2rem 1rem;
+}
+.emergency h2{
+  font-size:1.8rem;
+  margin-bottom:0.5rem;
+}
+.emergency a{
+  color:#000;
+  font-weight:600;
+  text-decoration:underline;
 }
 footer{
-  background:#000;padding:2rem 0;text-align:center;font-size:.85rem;
+  background:var(--surface);
+  text-align:center;
+  padding:2rem 1rem;
+  font-size:0.875rem;
 }
-footer a{color:var(--accent);}
-@media(max-width:768px){
-  .hero h1{font-size:3rem;}
-}
-@media(max-width:480px){
+@media (max-width:600px){
   .hero h1{font-size:2.5rem;}
-  .btn{padding:.5rem 1rem;}
 }
 </style>
 </head>
 <body>
-<a href="#main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
 <header>
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
-    <div class="logo">The Coolest LLC</div>
-    <div class="header-phone"><a href="tel:+15124686140">(512) 468-6140</a></div>
-  </div>
+  <div class="logo">THE COOLEST</div>
+  <div class="phone">(512) 468-6140</div>
 </header>
 
-<main id="main">
-  <section class="hero">
-    <div class="container">
-      <h1>Austin's #1 Rated HVAC Company</h1>
-      <p>Keeping Austin comfortable year‑round with expert AC repair, installation, heating service, and maintenance plans.</p>
-      <button class="btn" onclick="document.getElementById('schedule').scrollIntoView({behavior:'smooth'});">Schedule Service</button>
-      <a href="tel:+15124686140" class="btn secondary">Call Now</a>
-    </div>
-  </section>
+<section class="hero">
+  <h1>Austin's #1 Rated HVAC Company</h1>
+  <p>10+ years of excellence • 776+ 5‑star reviews • 24/7 emergency service</p>
+  <div class="cta">
+    <button class="btn-primary" onclick="location.href='tel:5124686140'">Schedule Service</button>
+    <button class="btn-secondary" onclick="location.href='tel:5124686140'">Call Now</button>
+  </div>
+</section>
 
-  <section class="trust" aria-label="Trust and certifications">
-    <div class="trust-item">
-      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="var(--accent)" d="M12 17.27l6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-      <span>5.0 ★ (776+ reviews)</span>
-    </div>
-    <div class="trust-item"><strong>NATE Certified</strong></div>
-    <div class="trust-item"><strong>BBB A+</strong></div>
-    <div class="trust-item"><strong>Licensed TX HVAC</strong></div>
-  </section>
+<div class="stats">
+  <div>776+ Reviews</div><div class="divider"></div>
+  <div>10+ Years</div><div class="divider"></div>
+  <div>BBB A+</div><div class="divider"></div>
+  <div>NATE Certified</div>
+</div>
 
-  <section class="services" aria-label="Our Services">
-    <div class="service-card">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="var(--accent)" d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z"/></svg>
-      <h3>AC Repair</h3>
-      <p>Fast, reliable repairs to keep your home cool.</p>
-    </div>
-    <div class="service-card">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="var(--accent)" d="M21 16v-2l-8-5V4l-3 2-3-2v5L3 14v2h18z"/></svg>
-      <h3>AC Installation</h3>
-      <p>Energy‑efficient units installed by certified technicians.</p>
-    </div>
-    <div class="service-card">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="var(--accent)" d="M12 2a9 9 0 00-9 9c0 5 7 13 9 13s9-8 9-13a9 9 0 00-9-9zm0 12.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"/></svg>
-      <h3>Heating Repair</h3>
-      <p>Keep your home warm with prompt heating fixes.</p>
-    </div>
-    <div class="service-card">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="var(--accent)" d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
-      <h3>Maintenance Plans</h3>
-      <p>Year‑round protection with scheduled check‑ups.</p>
-    </div>
-    <div class="service-card" style="grid-column: span 2; background:#1a1a1a;">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="var(--accent)" d="M12 2a9 9 0 00-9 9c0 5 7 13 9 13s9-8 9-13a9 9 0 00-9-9zm0 12.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"/></svg>
-      <h3>24/7 Emergency Service</h3>
-      <p>We're on call day and night for urgent HVAC needs.</p>
-    </div>
-  </section>
+<section class="services">
+  <div class="service-card">
+    <div class="icon">❄️</div>
+    <h3>Premium AC Installation</h3>
+    <p>Energy‑efficient units installed by certified technicians.</p>
+  </div>
+  <div class="service-card">
+    <div class="icon">🚨</div>
+    <h3>Emergency Repair</h3>
+    <p>Rapid response any time, day or night.</p>
+  </div>
+  <div class="service-card">
+    <div class="icon">🔥</div>
+    <h3>Heating Systems</h3>
+    <p>Reliable furnaces and heat pumps for Austin winters.</p>
+  </div>
+  <div class="service-card">
+    <div class="icon">🔧</div>
+    <h3>Maintenance Plans</h3>
+    <p>Year‑round care to keep your system running at peak.</p>
+  </div>
+</section>
 
-  <section class="highlights" aria-label="Company highlights">
-    <div class="highlight-item">
-      <h3>5.0</h3>
-      <p>Google Rating</p>
-    </div>
-    <div class="highlight-item">
-      <h3>776+</h3>
-      <p>Reviews</p>
-    </div>
-    <div class="highlight-item">
-      <h3>10+</h3>
-      <p>Years Experience</p>
-    </div>
-    <div class="highlight-item">
-      <h3>Licensed &amp; Insured</h3>
-    </div>
-  </section>
+<section class="why">
+  <div class="item">
+    <div class="icon">⌛</div>
+    <h3>10+ Years Experience</h3>
+    <p>Trusted by Austin homeowners since 2013.</p>
+  </div>
+  <div class="item">
+    <div class="icon">✅</div>
+    <h3>Licensed & Insured</h3>
+    <p>Fully vetted professionals, backed by comprehensive coverage.</p>
+  </div>
+  <div class="item">
+    <div class="icon">💲</div>
+    <h3>Upfront Pricing</h3>
+    <p>No hidden fees—transparent quotes before any work begins.</p>
+  </div>
+</section>
 
-  <section class="why">
-    <h2>Why Choose The Coolest LLC?</h2>
-    <div class="bullets">
-      <div class="bullet">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.54 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" fill="var(--accent)"/></svg>
-        <p>Fast, same‑day service for most repairs.</p>
-      </div>
-      <div class="bullet">
-        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="var(--accent)"/></svg>
-        <p>Certified technicians – NATE, BBB A+.</p>
-      </div>
-      <div class="bullet">
-        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="var(--accent)"/></svg>
-        <p>Transparent pricing – no hidden fees.</p>
-      </div>
-      <div class="bullet">
-        <svg viewBox="0 0 24 24"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zM9 9h6v2H9V9zm0 4h6v2H9v-2z" fill="var(--accent)"/></svg>
-        <p>Energy‑saving solutions to lower bills.</p>
-      </div>
-    </div>
-  </section>
+<section class="reviews">
+  <div class="rating">5.0 ★★★★★</div>
+  <div class="sub">Based on 776+ Google reviews</div>
+  <div class="badges">
+    <img src="https://i.imgur.com/6X6xG0U.png" alt="Google Reviews Badge">
+    <img src="https://i.imgur.com/4Z8k9pN.png" alt="BBB A+ Badge">
+    <img src="https://i.imgur.com/8Z7VY5a.png" alt="NATE Certified Badge">
+  </div>
+</section>
 
-  <section class="cta-section" id="schedule">
-    <h2>Ready to Stay Comfortable?</h2>
-    <a href="tel:+15124686140" class="phone">(512) 468-6140</a>
-    <div class="emergency-badge">24/7 Emergency</div>
-    <p style="margin-top:1rem;">Or email us at <a href="mailto:info@thecoolestservice.com">info@thecoolestservice.com</a></p>
-  </section>
-</main>
+<section class="emergency">
+  <h2>24/7 Emergency Service</h2>
+  <p><a href="tel:5124686140">(512) 468‑6140</a></p>
+</section>
 
 <footer>
-  <div class="container">
-    <p>&copy; 2024 The Coolest LLC. All rights reserved.</p>
-    <p>1234 Cool St, Austin, TX 78701</p>
-    <p><a href="#">Privacy Policy</a></p>
-  </div>
+  © 2026 The Coolest LLC • Austin, TX • <a href="#" style="color:var(--accent);">Privacy Policy</a>
 </footer>
+
 </body>
 </html>
